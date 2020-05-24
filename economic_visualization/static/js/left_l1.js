@@ -39,7 +39,7 @@ option = {
             emphasis: {
                 label: {
                     show: true,
-                    fontSize: fontSize(0.35),
+                    fontSize: fontSize(0.27),
                     fontWeight: 'bold'
                 }
             },
