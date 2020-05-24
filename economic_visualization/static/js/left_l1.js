@@ -1,5 +1,12 @@
-var ec_left1 = echarts.init(document.getElementById('l1'));
+function fontSize(res){
+	let docEl = document.documentElement,
+		clientWidth = window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth;
+	if (!clientWidth) return;
+	let fontSize = 100 * (clientWidth / 1920);
+	return res*fontSize;
+}
 
+var ec_left1 = echarts.init(document.getElementById('l1'));
 
 option = {
 	title: {
@@ -7,7 +14,7 @@ option = {
 		bottom:'10%',
 	    left: "10%",
 	    textStyle: {
-	        fontSize:20,
+	        fontSize:fontSize(0.25),
 	        fontWeight: '400',
 			fontFamily:'Courier New',
 			color:'#ffffff'
@@ -32,7 +39,7 @@ option = {
             emphasis: {
                 label: {
                     show: true,
-                    fontSize: 23,
+                    fontSize: fontSize(0.35),
                     fontWeight: 'bold'
                 }
             },

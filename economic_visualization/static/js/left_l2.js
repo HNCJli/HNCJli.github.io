@@ -1,3 +1,11 @@
+function fontSize(res){
+	let docEl = document.documentElement,
+		clientWidth = window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth;
+	if (!clientWidth) return;
+	let fontSize = 100 * (clientWidth / 1920);
+	return res*fontSize;
+}
+
 var ec_left2 = echarts.init(document.getElementById('l2'));
 
 option = {
@@ -5,10 +13,10 @@ option = {
     title: {
         text: '31个省市自治区人均GDP',
         left: 'center',
-        top: 60,
+        top: fontSize(0.91),
         textStyle:{
         	color:'#ffffff',
-        	fontSize:20
+        	fontSize:fontSize(0.25)
         }
     },
     tooltip: {
@@ -37,7 +45,7 @@ option = {
 			    color: '#9fc21f',
 			    shadowBlur: 200,
 			    shadowColor: 'rgba(255, 255, 127, 127)'
-			    }
+			    },
 			},
             data: [
                 {value: 164220, name: '北京市'},
@@ -74,15 +82,16 @@ option = {
             ].sort(function (a, b) { return a.value - b.value; }),
             roseType: 'radius',
             label: {
-                color: 'rgba(108, 255, 16, 76)'
+                color: 'rgba(108, 255, 16, 76)',
+				fontSize:fontSize(0.15)
             },
             labelLine: {
                 lineStyle: {
                     color: 'rgba(41, 144, 255, 76)'
                 },
                 smooth: 0.2,
-                length: 10,
-                length2: 20
+                length: fontSize(0.05),
+                length2: fontSize(0.25)
             },
             itemStyle: {
                 // color: '#c23531',

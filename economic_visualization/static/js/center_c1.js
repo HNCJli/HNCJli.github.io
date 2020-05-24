@@ -1,3 +1,11 @@
+function fontSize(res){
+	let docEl = document.documentElement,
+		clientWidth = window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth;
+	if (!clientWidth) return;
+	let fontSize = 100 * (clientWidth / 1920);
+	return res*fontSize;
+}
+
 var ec_center1 = echarts.init(document.getElementById('c1'));
 
 var mydata=[{'name': '上海', 'value': 3814},
@@ -48,11 +56,14 @@ var option = {
     },
     //左侧小导航图标
     visualMap: {
+
+        itemWidth:fontSize(0.25),//图形的宽度，即长条的宽度。
+        itemHeight:fontSize(0.15),    
         show: true,
-		left:30,
-		bottom:50,
+		left:fontSize(0.38),
+		bottom:fontSize(0.65),
         textStyle: {
-            fontSize: 11,
+            fontSize: fontSize(0.15),
 			color:'#aaffff'
         },
         splitList: [{ start: 1,end: 9 },

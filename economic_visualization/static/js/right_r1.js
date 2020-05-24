@@ -1,3 +1,11 @@
+function fontSize(res){
+	let docEl = document.documentElement,
+		clientWidth = window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth;
+	if (!clientWidth) return;
+	let fontSize = 100 * (clientWidth / 1920);
+	return res*fontSize;
+}
+
 var ec_right1 = echarts.init(document.getElementById('r1'));
 
 var myColor = ['#eb2100', '#eb3600', '#d0570e', '#d0a00e', '#34da62', '#00e9db', '#00c0e9', '#0096f3', '#33CCFF', '#33FFCC'];
@@ -19,17 +27,13 @@ option = {
     yAxis: [{
         axisTick: 'none',
         axisLine: 'none',
-        offset: '27',
+        offset: fontSize(0.40),
         axisLabel: {
-            textStyle: {
-                color: '#ffffff',
-                fontSize: '6rem',
-            }
         },
         axisLabel: {
             textStyle: {
                 color: '#ffffff',
-                fontSize: '16rem',
+                fontSize: fontSize(0.20),
             }
         },
         data: ['辽宁', '安徽', '河北', '湖南', '四川', '湖北', '河南', '山东', '广东', '江苏']
@@ -37,10 +41,6 @@ option = {
         axisTick: 'none',
         axisLine: 'none',
         axisLabel: {
-            textStyle: {
-                color: '#ffffff',
-                fontSize: '16rem',
-            }
         },
         data: []
     }, {
@@ -48,7 +48,7 @@ option = {
         nameGap: '0',
         nameTextStyle: {
             color: '#ffffff',
-            fontSize: 20,
+            fontSize: fontSize(0.25),
         },
         axisLine: {
             lineStyle: {
@@ -69,7 +69,7 @@ option = {
                     position: 'right',
                     textStyle: {
                         color: '#ffffff',
-                        fontSize: '13rem',
+                        fontSize: fontSize(0.15),
                     }
                 }
             },
@@ -124,7 +124,7 @@ option = {
             hoverAnimation: false,
             data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             yAxisIndex: 2,
-            symbolSize: 18,
+            symbolSize: fontSize(0.25),
             itemStyle: {
                 normal: {
                     color: function(params) {

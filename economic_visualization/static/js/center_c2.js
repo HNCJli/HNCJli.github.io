@@ -1,3 +1,11 @@
+function fontSize(res){
+	let docEl = document.documentElement,
+		clientWidth = window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth;
+	if (!clientWidth) return;
+	let fontSize = 100 * (clientWidth / 1920);
+	return res*fontSize;
+}
+
 var ec_center2 = echarts.init(document.getElementById('c2'));
 
 var dataMap = {};
@@ -88,10 +96,16 @@ option = {
 			formatter: '{b}<br/>{a0} :{c0}亿<br/> {a1} : {c1}亿<br/> {a2} : {c2}亿'
 		},
         legend: {
-            right: '50',
+			itemWidth: fontSize(0.25),
+			itemHeight: fontSize(0.15),
+            right: 50,
             data: ['第一产业', '第二产业', '第三产业'],
+			textStyle:{
+				color:"#ffffff",
+				fontSize:fontSize(0.15),
+			},
         },
-        calculable : true,
+        // calculable : true,
         grid: {
             top: 40,
             bottom: 30,
@@ -123,7 +137,7 @@ option = {
                 splitLine: {show: false},
 				axisLabel:{
 				    textStyle:{
-				        fontSize:8,
+				        fontSize:fontSize(0.10),
 						color:'#aaaaff'
 				    },
 				},
@@ -138,7 +152,7 @@ option = {
 				},
 				axisLabel:{
 				    textStyle:{
-				        fontSize:8,
+				        fontSize:fontSize(0.10),
 						color:'#aaaaff'
 				    },
 				},
@@ -167,6 +181,17 @@ option = {
                 radius: '28%',
                 z: 100,
 				color:['#0099e6', '#00da9c', '#ee9f00'],
+				tooltip:{
+					formatter: '{b0}: {c0}元'
+				},
+				label: {
+					fontSize:fontSize(0.15)
+				},
+				labelLine: {
+				    smooth: 0.2,
+				    length: fontSize(0.35),
+				    length2: fontSize(0.20)
+				},
             },
         ]
     },
@@ -177,7 +202,7 @@ option = {
 				left:'26%',
 				textStyle:{
 					color:'#ffffff',
-					fontSize:20
+					fontSize:fontSize(0.25)
 				}
 			},
             series: [
